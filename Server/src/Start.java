@@ -1,5 +1,3 @@
-package Kontroler;
-
 import Kontroler.Kontroler;
 
 public class Start {
