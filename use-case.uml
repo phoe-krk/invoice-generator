@@ -1,0 +1,56 @@
+left to right direction
+
+:Sprzedawca:
+:Kierownik:
+:Administrator:
+database "Baza Danych"
+
+rectangle sprzedawcy {
+:Kierownik: -[#blue]left-> (Sprzedawca:\nNowy)
+:Kierownik: -[#blue]left-> (Sprzedawca:\nEdytuj)
+:Kierownik: -[#blue]left-> (Sprzedawca:\nPrzejrzyj)
+:Kierownik: -[#blue]left-> (Sprzedawca:\nEksportuj)
+}
+
+rectangle klienci {
+:Sprzedawca: -[#red]up-> (Klient:\nNowy)
+:Sprzedawca: -[#red]up-> (Klient:\nEdytuj)
+:Sprzedawca: -[#red]up-> (Klient:\nPrzejrzyj)
+
+:Kierownik: -[#blue]up-> (Klient:\nNowy)
+:Kierownik: -[#blue]up-> (Klient:\nEdytuj)
+:Kierownik: -[#blue]up-> (Klient:\nPrzejrzyj)
+:Kierownik: -[#blue]up-> (Klient:\nEksportuj)
+}
+
+rectangle faktury {
+:Sprzedawca: -[#red]right-> (Faktura:\nNowa)
+:Sprzedawca: -[#red]right-> (Faktura:\nEdytuj)
+:Sprzedawca: -[#red]right-> (Faktura:\nPrzejrzyj)
+:Sprzedawca: -[#red]right-> (Faktura:\nEksportuj)
+
+:Kierownik: -[#blue]right-> (Faktura:\nNowa)
+:Kierownik: -[#blue]right-> (Faktura:\nEdytuj)
+:Kierownik: -[#blue]right-> (Faktura:\nPrzejrzyj)
+:Kierownik: -[#blue]right-> (Faktura:\nEksportuj)
+}
+
+rectangle produkty {
+:Sprzedawca: -[#red]down-> (Produkt:\nPrzejrzyj)
+
+:Kierownik: -[#blue]down-> (Produkt:\nNowy)
+:Kierownik: -[#blue]down-> (Produkt:\nEdytuj)
+:Kierownik: -[#blue]down-> (Produkt:\nPrzejrzyj)
+:Kierownik: -[#blue]down-> (Produkt:\nEksportuj)
+}
+
+rectangle zestawienia {
+:Kierownik: -[#blue]-> (Zestawienia:\nEksportuj)
+}
+
+rectangle kierownicy {
+(Kierownik:\nNowy)
+(Kierownik:\nEdytuj)
+(Kierownik:\nPrzejrzyj)
+(Kierownik:\nEksportuj)
+}
