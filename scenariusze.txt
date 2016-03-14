@@ -1,0 +1,27 @@
+;;;; ZALOGUJ PRZEDE WSZYSTKIM
+
+;;; Nowy
+1) sprawdź uprawnienia użytkownika
+2) zbierz dane od użytkownika
+3) sprawdź poprawność i kolizje
+4) wyślij dane do bazy
+
+;;; Edytuj
+1) sprawdź uprawnienia użytkownika
+2) pobierz dane z bazy
+3) wyświetl dane użytkownikowi
+4) zbierz dane od użytkownika
+5) sprawdź poprawność i kolizje
+6) wyślij dane do bazy
+
+;;; Przejrzyj
+1) sprawdź uprawnienia użytkownika
+2) pobierz dane z bazy
+3) wyświetl dane użytkownikowi
+
+;;; Eksportuj
+1) sprawdź uprawnienia użytkownika
+2) pobierz dane z bazy
+3) przekonwertuj dane do TeXa
+4) wyślij TeX do kompilatora
+5) wyślij gotowy PDF użytkownikowi
