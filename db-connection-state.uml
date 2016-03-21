@@ -1,0 +1,8 @@
+[*] --> Rozłączony        : Utwórz
+Rozłączony --> Łączący    : Połącz
+Łączący --> Rozłączony    : PołączenieNieudane
+Łączący --> Połączony     : PołączenieUdane
+Połączony --> Rozłączony  : PołączenieZerwane
+
+Połączony --> Zajęty      : PrzyjmijKwerendę
+Zajęty --> Połączony      : ZwróćDane
