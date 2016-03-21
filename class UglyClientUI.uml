@@ -1,0 +1,101 @@
+class WindowedUI
+interface ClientUI
+class ClientBackend
+
+interface Data
+class ProductData
+class ClientData
+class InvoiceData
+class LoginData
+class ErrorData
+class Request
+enum DataType
+
+class Client
+class ServerFrontend
+interface LoginManager
+class SimpleLoginManager
+interface DBConnection
+class RandomDB
+interface PDFGenerator
+class TeXGenerator
+
+DataType : Login
+DataType : Product
+DataType : Client
+DataType : Invoice
+DataType : Error
+
+Client : String address
+Client : Request request
+
+Request : LoginData loginData
+Request : DataType dataType
+Request : ArrayList<Data> data
+
+LoginData : String login
+LoginData : String passwordHash
+LoginData : String NIP
+
+InvoiceData : ClientData client
+InvoiceData : ArrayList<ProductData> products
+InvoiceData : Date date
+
+ClientData : String pesel
+ClientData : String name
+
+ProductData : String name
+ProductData : Integer price
+
+ErrorData : String info
+
+ClientUI : LoginData getLoginData()
+ClientUI : Data displayHomeScreen()
+ClientUI : void getDataFromUser()
+ClientUI : void displayData(data : Data)
+ClientUI : void displayPDF(pdf : PDF)
+
+ClientBackend : Connection serverConnection
+ClientBackend : void sendLoginData(loginData : LoginData)
+ClientBackend : void sendRequestFromUser(request : Request)
+
+ServerFrontend : ConnectionSelector connectionSelector
+ServerFrontend : Validator validator
+ServerFrontend : Client[] clients
+ServerFrontend : void handleDB(dbData : DBData)
+ServerFrontend : void handleLogin(loginData : LoginData)
+ServerFrontend : void sendDataToClient(data : Data, client : Client)
+
+PDFGenerator : File makePDF(data : InvoiceData)
+
+DBConnection : ClientData[] getAllClients(LoginData login)
+DBConnection : void addClient(ClientData client, LoginData login)
+DBConnection : InvoiceData[] getInvoices( LoginData login)
+DBConnection : ProductData[] getProducts(LoginData login)
+
+Request --o Client
+Request -left- ClientBackend
+
+
+Client --* ServerFrontend
+
+DataType --o Request
+Data -right-o Request
+Data --|> ProductData
+Data --|> ClientData
+Data --|> InvoiceData
+Data --|> LoginData
+Data --|> ErrorData
+
+
+WindowedUI <|-- ClientUI
+ClientUI --o ClientBackend
+
+ServerFrontend o-- LoginManager
+LoginManager -down-|> SimpleLoginManager
+
+ServerFrontend o-- DBConnection
+DBConnection -down-|> RandomDB
+
+ServerFrontend o-- PDFGenerator
+PDFGenerator -down-|> TeXGenerator
