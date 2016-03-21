@@ -1,0 +1,17 @@
+'Faktury
+
+[*] --> Utworzona : Nowa Faktura
+
+Utworzona --> Zapisana : Zapisz Fakturę
+
+Utworzona --> Zdraftowana : Draftuj Fakturę
+Zdraftowana --> Utworzona : Oddraftuj Fakturę
+
+Zapisana --> Edytowana : Edytuj Fakturę
+Edytowana --> Zapisana : Zapisz Fakturę
+
+Zapisana --> Wyeksportowana : Eksportuj Fakturę
+Wyeksportowana --> [*]
+
+Zapisana --> Załadowana : Przejrzyj Fakturę
+Załadowana --> Edytowana : Edytuj Fakturę
