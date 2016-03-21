@@ -1,0 +1,6 @@
+[*] --> AutoryzujeSię             : PróbaLogowania
+AutoryzujeSię --> Autoryzowany    : LogowanieOK
+AutoryzujeSię --> Nieautoryzowany : LogowanieFAIL
+Nieautoryzowany --> [*]           : WonMiStąd
+Autoryzowany --> Połączony        : ZapisDoPołączonych
+Połączony --> [*]                 : Wylogowanie
