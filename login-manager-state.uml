@@ -1,0 +1,5 @@
+[*] --> Gotowy             : Utwórz
+Gotowy --> Zapytany        : PróbaLogowania
+Zapytany --> Sprawdza      : ŁączySięZDB
+Sprawdza --> Sprawdza      : BrakPołączeniaZDB
+Sprawdza --> Gotowy        : ZwróćOdpowiedź
