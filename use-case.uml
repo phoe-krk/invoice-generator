@@ -10,6 +10,7 @@ rectangle sprzedawcy {
 :Kierownik: -[#blue]left-> (Sprzedawca:\nEdytuj)
 :Kierownik: -[#blue]left-> (Sprzedawca:\nPrzejrzyj)
 :Kierownik: -[#blue]left-> (Sprzedawca:\nEksportuj)
+:Kierownik: -[#blue]left-> (Sprzedawca:\nUsuń)
 }
 
 rectangle klienci {
@@ -21,6 +22,7 @@ rectangle klienci {
 :Kierownik: -[#blue]up-> (Klient:\nEdytuj)
 :Kierownik: -[#blue]up-> (Klient:\nPrzejrzyj)
 :Kierownik: -[#blue]up-> (Klient:\nEksportuj)
+:Kierownik: -[#blue]up-> (Klient:\nUsuń)
 }
 
 rectangle faktury {
@@ -33,6 +35,7 @@ rectangle faktury {
 :Kierownik: -[#blue]right-> (Faktura:\nEdytuj)
 :Kierownik: -[#blue]right-> (Faktura:\nPrzejrzyj)
 :Kierownik: -[#blue]right-> (Faktura:\nEksportuj)
+:Kierownik: -[#blue]right-> (Faktura:\nUsuń)
 }
 
 rectangle produkty {
@@ -42,6 +45,7 @@ rectangle produkty {
 :Kierownik: -[#blue]down-> (Produkt:\nEdytuj)
 :Kierownik: -[#blue]down-> (Produkt:\nPrzejrzyj)
 :Kierownik: -[#blue]down-> (Produkt:\nEksportuj)
+:Kierownik: -[#blue]down-> (Produkt:\nUsuń)
 }
 
 rectangle zestawienia {
@@ -53,4 +57,5 @@ rectangle kierownicy {
 (Kierownik:\nEdytuj)
 (Kierownik:\nPrzejrzyj)
 (Kierownik:\nEksportuj)
+(Kierownik:\nUsuń)
 }
