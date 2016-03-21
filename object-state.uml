@@ -1,0 +1,15 @@
+[*] --> Utworzony : Nowy
+
+Utworzony --> Zapisany : Zapisz
+
+Utworzony --> Zdraftowany : Draftuj
+Zdraftowany --> Utworzony : Oddraftuj
+
+Zapisany --> Edytowany : Edytuj
+Edytowany --> Zapisany : Zapisz
+
+Zapisany --> Wyeksportowany : Eksportuj
+Wyeksportowany --> [*]
+
+Zapisany --> Załadowany : Przejrzyj
+Załadowany --> Edytowany : Edytuj
