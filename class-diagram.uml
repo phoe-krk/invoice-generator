@@ -10,6 +10,7 @@ class LoginData
 class ErrorData
 class Request
 enum DataType
+enum UserType
 
 class Client
 class ServerFrontend
@@ -19,6 +20,9 @@ interface DBConnection
 class RandomDB
 interface PDFGenerator
 class TeXGenerator
+
+UserType : Admin
+UserType : User
 
 DataType : Login
 DataType : Product
@@ -34,7 +38,7 @@ Request : DataType dataType
 Request : ArrayList<Data> data
 
 LoginData : String login
-LoginData : String passwordHash
+LoginData : int passwordHash
 LoginData : String NIP
 
 InvoiceData : ClientData client
@@ -56,8 +60,8 @@ ClientUI : void displayData(data : Data)
 ClientUI : void displayPDF(pdf : PDF)
 
 ClientBackend : Connection serverConnection
-ClientBackend : void sendLoginData(loginData : LoginData)
-ClientBackend : void sendRequestFromUser(request : Request)
+ClientBackend : boolean sendLoginData(loginData : LoginData)
+ClientBackend : Data sendRequestFromUser(request : Request)
 
 ServerFrontend : ConnectionSelector connectionSelector
 ServerFrontend : Validator validator
@@ -79,12 +83,14 @@ Request -left- ClientBackend
 
 Client --* ServerFrontend
 
+
 DataType --o Request
 Data -right-o Request
 Data --|> ProductData
 Data --|> ClientData
 Data --|> InvoiceData
 Data --|> LoginData
+UserType --o LoginData
 Data --|> ErrorData
 
 
