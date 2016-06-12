@@ -5,7 +5,7 @@ import java.util.Date;
  * Klasa stworzona w celu testowania podstawowego działania okienek
  */
 
-public class DummyBackend implements ClientBackend {
+public class DummyBackend implements Backend {
     @Override
     public boolean sendLoginData(LoginData loginData) {
         return true;

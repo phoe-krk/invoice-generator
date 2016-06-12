@@ -12,14 +12,13 @@ public class Launcher {
     private JTextField textFieldLogin;
     private JTextField textFieldPassword;
     public JPanel PanelLauncher;
-    private ClientBackend backend;
+    private Backend backend;
 
     public Launcher(){
 
     }
 
-
-    public Launcher(ClientBackend b) {
+    public Launcher(Backend b) {
         this.backend = b;
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -31,11 +30,13 @@ public class Launcher {
                 else
                     userType = UserType.USER;
                 l = new LoginData(textFieldLogin.getText(), textFieldPassword.getText().hashCode(), userType);
-                if (backend.sendLoginData(l)) {
-                    if (userType == UserType.USER) {
-                       //Not implemented
-                    } else {
-                        AdminUi.launch(backend,l);
+                try {
+                    if (backend.sendLoginData(l)) {
+                        if (userType == UserType.USER) {
+                           //Not implemented
+                        } else {
+                            AdminUi.launch(backend,l);
+                        }
                     }
                 } catch (UnknownHostException e1) {
                     e1.printStackTrace();

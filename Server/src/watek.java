@@ -11,8 +11,8 @@ import pl.edu.uj.io.invoice.*;
 
 public class watek implements Runnable {
     Socket s;
-    InvoiceData genDate;
-    public watek(Socket s,InvoiceData gen)
+    pl.edu.uj.io.invoice.InvoiceData genDate;
+    public watek(Socket s,pl.edu.uj.io.invoice.InvoiceData gen)
     {
         this.s=s;
         this.genDate=gen;
@@ -38,8 +38,9 @@ public class watek implements Runnable {
                 }
             }
 
-
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

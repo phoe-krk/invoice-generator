@@ -24,7 +24,7 @@ public class AdminUi {
     private JList list2;
     private JList list3;
     LoginData loginData;
-    ClientBackend backend;
+    Backend backend;
     InvoiceData[] invoices;
     ClientData[] clients;
     ProductData[] products;
@@ -32,47 +32,47 @@ public class AdminUi {
     public AdminUi() {
     }
 
-    public AdminUi(ClientBackend b, LoginData l) {
-        backend=b;
-        loginData=l;
+    public AdminUi(Backend b, LoginData l) {
+        backend = b;
+        loginData = l;
         fillInvoices();
 
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 //Invoice: Client, Data, Products
-                if (tabbedPane1.getSelectedIndex()==0){
+                if (tabbedPane1.getSelectedIndex() == 0) {
                     fillInvoices();
-                }else if(tabbedPane1.getSelectedIndex()==1){
+                } else if (tabbedPane1.getSelectedIndex() == 1) {
                     fillClients();
-                }else if(tabbedPane1.getSelectedIndex()==2){
+                } else if (tabbedPane1.getSelectedIndex() == 2) {
                     fillProducts();
                 }
             }
         });
     }
 
-    private void fillInvoices(){
-        Request r = new Request(loginData,DataType.INVOICE,null);
-        invoices = (InvoiceData[])backend.sendRequestFromUser(r);
+    private void fillInvoices() {
+        Request r = new Request(loginData, DataType.INVOICE, null);
+        invoices = (InvoiceData[]) backend.sendRequestFromUser(r);
         list1.setListData(invoices);
     }
 
-    private void fillClients(){
-        Request r = new Request(loginData,DataType.CLIENT,null);
-        clients = (ClientData[])backend.sendRequestFromUser(r);
+    private void fillClients() {
+        Request r = new Request(loginData, DataType.CLIENT, null);
+        clients = (ClientData[]) backend.sendRequestFromUser(r);
         list2.setListData(clients);
     }
 
-    private void fillProducts(){
-        Request r = new Request(loginData,DataType.PRODUCT,null);
-        products = (ProductData[])backend.sendRequestFromUser(r);
+    private void fillProducts() {
+        Request r = new Request(loginData, DataType.PRODUCT, null);
+        products = (ProductData[]) backend.sendRequestFromUser(r);
         list3.setListData(products);
     }
 
-    public static void launch(ClientBackend b, LoginData l) {
+    public static void launch(Backend b, LoginData l) {
         JFrame frame = new JFrame("AdminUi");
-        frame.setContentPane(new AdminUi(b,l).panel1);
+        frame.setContentPane(new AdminUi(b, l).panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

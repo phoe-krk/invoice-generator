@@ -5,6 +5,7 @@ import org.armedbear.lisp.JavaObject;
 import org.armedbear.lisp.LispObject;
 import org.armedbear.lisp.Nil;
 
+//Ta nazwa już do czegoś służy
 public class InvoiceData {
     public Cons data;
     public Cons seller;

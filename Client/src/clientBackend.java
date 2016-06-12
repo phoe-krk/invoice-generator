@@ -8,7 +8,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class clientBackend {
+public class clientBackend implements Backend{
     Socket s;
     public clientBackend( ){
         try {
@@ -17,7 +17,8 @@ public class clientBackend {
             e.printStackTrace();
         }
     }
-    boolean sendLoginData(LoginData loginData) throws UnknownHostException {
+    @Override
+    public boolean sendLoginData(LoginData loginData) throws UnknownHostException {
         try {
 
             ObjectOutputStream oos=new ObjectOutputStream(s.getOutputStream());
@@ -30,7 +31,8 @@ public class clientBackend {
         }
         return false;
     }
-    String sendRequestFromUser(Request request){
+    @Override
+    public Data[] sendRequestFromUser(Request request){
         ObjectOutputStream oos= null;
         String str="";
         try {
@@ -46,6 +48,9 @@ public class clientBackend {
             e.printStackTrace();
         }
 
-        return str;
+
+        //Na szybko
+        Data[] d = new Data[1];
+        return d;
     }
 }
