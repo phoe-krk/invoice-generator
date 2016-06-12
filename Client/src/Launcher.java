@@ -10,10 +10,15 @@ public class Launcher {
     private JComboBox comboBoxType;
     private JTextField textFieldLogin;
     private JTextField textFieldPassword;
-    private clientBackend backend;
+    public JPanel PanelLauncher;
+    private ClientBackend backend;
+
+    public Launcher(){
+
+    }
 
 
-    public Launcher(clientBackend b) {
+    public Launcher(ClientBackend b) {
         this.backend = b;
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -27,12 +32,14 @@ public class Launcher {
                 l = new LoginData(textFieldLogin.getText(), textFieldPassword.getText().hashCode(), userType);
                 if (backend.sendLoginData(l)) {
                     if (userType == UserType.USER) {
-                        ClientUi gui = new ClientUi();
+                       //Not implemented
                     } else {
-                        AdminUi gui = new AdminUi();
+                        AdminUi.launch(backend,l);
                     }
                 }
             }
         });
     }
+
+
 }
