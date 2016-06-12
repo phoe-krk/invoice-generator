@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.UnknownHostException;
 
 /**
  * Created by koden on 11/06/2016.
@@ -36,6 +37,8 @@ public class Launcher {
                     } else {
                         AdminUi.launch(backend,l);
                     }
+                } catch (UnknownHostException e1) {
+                    e1.printStackTrace();
                 }
             }
         });

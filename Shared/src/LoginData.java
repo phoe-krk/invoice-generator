@@ -1,7 +1,10 @@
 /**
  * Created by koden on 11/06/2016.
  */
-public class LoginData implements Data {
+
+
+import java.io.Serializable;
+public class LoginData implements Data,Serializable {
     String login;
     int passwordHash;
     UserType type;
