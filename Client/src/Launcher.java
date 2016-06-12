@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.UnknownHostException;
 
 /**
  * Created by koden on 11/06/2016.
@@ -25,12 +26,16 @@ public class Launcher {
                 else
                     userType = UserType.USER;
                 l = new LoginData(textFieldLogin.getText(), textFieldPassword.getText().hashCode(), userType);
-                if (backend.sendLoginData(l)) {
-                    if (userType == UserType.USER) {
-                        ClientUi gui = new ClientUi();
-                    } else {
-                        AdminUi gui = new AdminUi();
+                try {
+                    if (backend.sendLoginData(l)) {
+                        if (userType == UserType.USER) {
+                            ClientUi gui = new ClientUi();
+                        } else {
+                            AdminUi gui = new AdminUi();
+                        }
                     }
+                } catch (UnknownHostException e1) {
+                    e1.printStackTrace();
                 }
             }
         });

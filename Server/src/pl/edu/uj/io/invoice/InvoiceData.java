@@ -1,6 +1,9 @@
 package pl.edu.uj.io.invoice;
 
-import org.armedbear.lisp.*;
+import org.armedbear.lisp.Cons;
+import org.armedbear.lisp.JavaObject;
+import org.armedbear.lisp.LispObject;
+import org.armedbear.lisp.Nil;
 
 public class InvoiceData {
     public Cons data;
