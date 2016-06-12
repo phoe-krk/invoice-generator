@@ -33,10 +33,12 @@ public class Launcher {
                 try {
                     if (backend.sendLoginData(l)) {
                         if (userType == UserType.USER) {
-                           //Not implemented
+                            //// TODO: 13/06/2016 Make UserUi
                         } else {
                             AdminUi.launch(backend,l);
                         }
+                    } else {
+                        //// TODO: 13/06/2016 Hasło nieprawidłowe
                     }
                 } catch (UnknownHostException e1) {
                     e1.printStackTrace();

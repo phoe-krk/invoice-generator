@@ -11,8 +11,9 @@ import pl.edu.uj.io.invoice.*;
 
 public class watek implements Runnable {
     Socket s;
-    pl.edu.uj.io.invoice.InvoiceData genDate;
-    public watek(Socket s,pl.edu.uj.io.invoice.InvoiceData gen)
+    InternalInvoiceData genDate;
+
+    public watek(Socket s, InternalInvoiceData gen)
     {
         this.s=s;
         this.genDate=gen;

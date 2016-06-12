@@ -1,6 +1,19 @@
-class WindowedUI
-interface ClientUI
+class Launcher
+class AdminUi
+class ClientUi
+interface Backend
+class DummyBackend
 class ClientBackend
+
+Launcher : LoginData l
+Launcher : Backend backend
+Backend --|> DummyBackend
+Backend --|> ClientBackend
+
+Launcher --o Backend
+Launcher -up- AdminUi
+Launcher -up- ClientUi
+
 
 interface Data
 class ProductData
@@ -12,7 +25,6 @@ class Request
 enum DataType
 enum UserType
 
-class Client
 class ServerFrontend
 interface LoginManager
 class SimpleLoginManager
@@ -30,8 +42,6 @@ DataType : Client
 DataType : Invoice
 DataType : Error
 
-Client : String address
-Client : Request request
 
 Request : LoginData loginData
 Request : DataType dataType
@@ -53,15 +63,9 @@ ProductData : Integer price
 
 ErrorData : String info
 
-ClientUI : LoginData getLoginData()
-ClientUI : Data displayHomeScreen()
-ClientUI : void getDataFromUser()
-ClientUI : void displayData(data : Data)
-ClientUI : void displayPDF(pdf : PDF)
 
-ClientBackend : Connection serverConnection
-ClientBackend : boolean sendLoginData(loginData : LoginData)
-ClientBackend : Data sendRequestFromUser(request : Request)
+Backend : boolean sendLoginData(loginData : LoginData)
+Backend : Data[] sendRequestFromUser(request : Request)
 
 ServerFrontend : ConnectionSelector connectionSelector
 ServerFrontend : Validator validator
@@ -77,12 +81,8 @@ DBConnection : void addClient(ClientData client, LoginData login)
 DBConnection : InvoiceData[] getInvoices( LoginData login)
 DBConnection : ProductData[] getProducts(LoginData login)
 
-Request --o Client
-Request -left- ClientBackend
-
-
-Client --* ServerFrontend
-
+Request --* ServerFrontend
+Request -left- Backend
 
 DataType --o Request
 Data -right-o Request
@@ -93,10 +93,6 @@ Data --|> LoginData
 UserType --o LoginData
 Data --|> ErrorData
 
-
-WindowedUI <|-- ClientUI
-ClientUI --o ClientBackend
-
 ServerFrontend o-- LoginManager
 LoginManager -down-|> SimpleLoginManager
 
@@ -104,4 +100,4 @@ ServerFrontend o-- DBConnection
 DBConnection -down-|> RandomDB
 
 ServerFrontend o-- PDFGenerator
-PDFGenerator -down-|> TeXGenerator
+PDFGenerator -down-|> InvoiceGenerator

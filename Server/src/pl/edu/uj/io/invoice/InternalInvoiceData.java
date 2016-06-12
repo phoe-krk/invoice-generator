@@ -6,7 +6,7 @@ import org.armedbear.lisp.LispObject;
 import org.armedbear.lisp.Nil;
 
 //Ta nazwa już do czegoś służy
-public class InvoiceData {
+public class InternalInvoiceData {
     public Cons data;
     public Cons seller;
     public Cons buyer;
@@ -67,7 +67,7 @@ public class InvoiceData {
         return result;
     }
 
-    public InvoiceData (Cons data, Cons seller, Cons buyer, LispObject wares) {
+    public InternalInvoiceData(Cons data, Cons seller, Cons buyer, LispObject wares) {
         this.data = data;
         this.seller = seller;
         this.buyer = buyer;

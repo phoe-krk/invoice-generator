@@ -50,6 +50,7 @@ public class AdminUi {
                 }
             }
         });
+        //// TODO: 13/06/2016 Add, edit, delete, make buttons work.
     }
 
     private void fillInvoices() {
