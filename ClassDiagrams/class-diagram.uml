@@ -1,3 +1,4 @@
+@startuml
 class Launcher
 class AdminUi
 class ClientUi
@@ -24,6 +25,7 @@ class ErrorData
 class Request
 enum DataType
 enum UserType
+enum RequestType
 
 class ServerFrontend
 interface LoginManager
@@ -32,6 +34,11 @@ interface DBConnection
 class RandomDB
 interface PDFGenerator
 class TeXGenerator
+
+RequestType : Show
+RequestType : Edit
+RequestType : Delete
+RequestType : Add
 
 UserType : Admin
 UserType : User
@@ -45,6 +52,7 @@ DataType : Error
 
 Request : LoginData loginData
 Request : DataType dataType
+Request : RequestType requestType
 Request : ArrayList<Data> data
 
 LoginData : String login
@@ -84,6 +92,8 @@ DBConnection : ProductData[] getProducts(LoginData login)
 Request --* ServerFrontend
 Request -left- Backend
 
+RequestType --o Request
+
 DataType --o Request
 Data -right-o Request
 Data --|> ProductData
@@ -101,3 +111,4 @@ DBConnection -down-|> RandomDB
 
 ServerFrontend o-- PDFGenerator
 PDFGenerator -down-|> InvoiceGenerator
+@enduml
