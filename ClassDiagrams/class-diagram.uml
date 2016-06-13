@@ -1,0 +1,103 @@
+class Launcher
+class AdminUi
+class ClientUi
+interface Backend
+class DummyBackend
+class ClientBackend
+
+Launcher : LoginData l
+Launcher : Backend backend
+Backend --|> DummyBackend
+Backend --|> ClientBackend
+
+Launcher --o Backend
+Launcher -up- AdminUi
+Launcher -up- ClientUi
+
+
+interface Data
+class ProductData
+class ClientData
+class InvoiceData
+class LoginData
+class ErrorData
+class Request
+enum DataType
+enum UserType
+
+class ServerFrontend
+interface LoginManager
+class SimpleLoginManager
+interface DBConnection
+class RandomDB
+interface PDFGenerator
+class TeXGenerator
+
+UserType : Admin
+UserType : User
+
+DataType : Login
+DataType : Product
+DataType : Client
+DataType : Invoice
+DataType : Error
+
+
+Request : LoginData loginData
+Request : DataType dataType
+Request : ArrayList<Data> data
+
+LoginData : String login
+LoginData : int passwordHash
+LoginData : String NIP
+
+InvoiceData : ClientData client
+InvoiceData : ArrayList<ProductData> products
+InvoiceData : Date date
+
+ClientData : String pesel
+ClientData : String name
+
+ProductData : String name
+ProductData : Integer price
+
+ErrorData : String info
+
+
+Backend : boolean sendLoginData(loginData : LoginData)
+Backend : Data[] sendRequestFromUser(request : Request)
+
+ServerFrontend : ConnectionSelector connectionSelector
+ServerFrontend : Validator validator
+ServerFrontend : Client[] clients
+ServerFrontend : void handleDB(dbData : DBData)
+ServerFrontend : void handleLogin(loginData : LoginData)
+ServerFrontend : void sendDataToClient(data : Data, client : Client)
+
+PDFGenerator : File makePDF(data : InvoiceData)
+
+DBConnection : ClientData[] getAllClients(LoginData login)
+DBConnection : void addClient(ClientData client, LoginData login)
+DBConnection : InvoiceData[] getInvoices( LoginData login)
+DBConnection : ProductData[] getProducts(LoginData login)
+
+Request --* ServerFrontend
+Request -left- Backend
+
+DataType --o Request
+Data -right-o Request
+Data --|> ProductData
+Data --|> ClientData
+Data --|> InvoiceData
+Data --|> LoginData
+UserType --o LoginData
+Data --|> ErrorData
+
+ServerFrontend o-- LoginManager
+LoginManager -down-|> SimpleLoginManager
+
+ServerFrontend o-- DBConnection
+DBConnection -down-|> RandomDB
+
+ServerFrontend o-- PDFGenerator
+PDFGenerator -down-|> InvoiceGenerator
